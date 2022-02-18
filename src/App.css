@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+  background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  color: #f1f1f1;
+
+  padding: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  outline: 0;
+  border: 0;
+  background-color: #443c8d;
+  color: #f1f1f1;
+  transition: all 0.3s ease-in;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:disabled {
+  background-color: #c1bddf;
+  cursor: default;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover {
+  transform: scale(1.05);
+}
+
+input, textarea {
+  background-color: #f1f1f1;
+  opacity: 0.8;
+  border: 0;
+  outline: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  color: #443c8d;
+  font-size: 1.1rem;
+  resize: none;
+}
+
+input:active, input:focus, textarea:active, textarea:focus {
+  opacity: 1;
+  outline: 1px solid #443c8d;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.view {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:root {
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #07bc0c;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #f40101;
 }
