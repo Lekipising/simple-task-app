@@ -15,12 +15,27 @@ export default function CreateTask({ wasSuccessful, editingTask }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(title, description);
+    console.log("edit ", editingTask);
     const existingTasks = JSON.parse(localStorage.getItem("tasks"));
+    const editedList = editingTask
+      ? existingTasks.map((item) => {
+          if (item.id === editingTask.id) {
+            return {
+              id: item.id,
+              title: title,
+              desc: description,
+            };
+          }
+          return item;
+        })
+      : [];
     const newTasks = existingTasks
       ? [...existingTasks, { title: title, desc: description, id: Date.now() }]
       : [{ title: title, desc: description, id: Date.now() }];
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    localStorage.setItem(
+      "tasks",
+      editingTask ? JSON.stringify(editedList) : JSON.stringify(newTasks)
+    );
     message("success", "Task created successfully");
     setDescription("");
     setTitle("");
@@ -44,6 +59,7 @@ export default function CreateTask({ wasSuccessful, editingTask }) {
           value={title}
           onChange={(e) => onChangeTitle(e)}
           className="title"
+          maxLength={40}
         />
 
         <label htmlFor="desc">Task Title</label>
@@ -53,6 +69,7 @@ export default function CreateTask({ wasSuccessful, editingTask }) {
           value={description}
           onChange={(e) => onChangeDescription(e)}
           className="desc"
+          maxLength={100}
         />
 
         <button

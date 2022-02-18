@@ -16,7 +16,11 @@ export default function ViewAll({ refresh, editing }) {
   const onEdit = (task) => {
     editing(task);
   };
-  const onDelete = (id) => {};
+  const onDelete = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
+  };
   return (
     <div className="tasksall">
       {tasks ? (
@@ -33,7 +37,9 @@ export default function ViewAll({ refresh, editing }) {
                 <button className="btn" onClick={() => onEdit(item)}>
                   Edit
                 </button>
-                <button className="btn">Delete</button>
+                <button className="btn" onClick={() => onDelete(item.id)}>
+                  Delete
+                </button>
               </div>
             </div>
           ))
