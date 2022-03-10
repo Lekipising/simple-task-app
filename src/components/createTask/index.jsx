@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import message from "../others/message";
+
 import "./index.css";
 
 export default function CreateTask({ wasSuccessful, editingTask }) {
@@ -36,7 +36,6 @@ export default function CreateTask({ wasSuccessful, editingTask }) {
       "tasks",
       editingTask ? JSON.stringify(editedList) : JSON.stringify(newTasks)
     );
-    message("success", "Task created successfully");
     setDescription("");
     setTitle("");
     wasSuccessful();
